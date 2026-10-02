@@ -33,10 +33,7 @@ function AdminSidebarInner() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bellOpen, setBellOpen] = useState(false);
   const [reviewCount, setReviewCount] = useState(0);
-  const [seenIds, setSeenIds] = useState<Set<string>>(() => {
-    if (typeof window === "undefined") return new Set();
-    try { return new Set(JSON.parse(localStorage.getItem("admin_seen_notifs") ?? "[]")); } catch { return new Set(); }
-  });
+  const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
   const bellRef = useRef<HTMLDivElement>(null);
 
   const uploadedQuery = useMemoFirebase(() => {
@@ -75,10 +72,7 @@ function AdminSidebarInner() {
 
   const isDashboard = pathname === "/admin/dashboard";
 
-  const [lastActiveTab, setLastActiveTab] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    return localStorage.getItem("admin_active_tab") ?? null;
-  });
+  const [lastActiveTab, setLastActiveTab] = useState<string | null>(null);
 
   // Sync lastActiveTab from URL when on dashboard
   useEffect(() => {

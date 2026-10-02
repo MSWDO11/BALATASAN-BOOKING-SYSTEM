@@ -4,12 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { ChatWidget } from '@/components/chat-widget';
 import { FirebaseErrorListener } from '@/components/FirebaseErrorListener';
-import dynamic from 'next/dynamic';
-
-const SmartErrorBoundary = dynamic(
-  () => import('@/components/smart-error-boundary').then(m => m.SmartErrorBoundary),
-  { ssr: false }
-);
+import { SmartErrorBoundary } from '@/components/smart-error-boundary';
 
 export const metadata: Metadata = {
   title: 'Balatasan Stay | Eco-Resort Booking',
